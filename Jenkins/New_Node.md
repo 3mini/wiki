@@ -10,7 +10,7 @@ JNLP (Java Network Launch Protocol) 를 이용
 
 #### MacOS
 
-1. Jenkins - Nodes 에서 `Launch Method` 를 `Launch agent by connecting it to master` 로 선택 
+1. Jenkins - Nodes 에서 `Launch Method` 를 `Launch agent by connecting it to the master` 로 선택 
 
     ![](images/launch_method.png)
 
