@@ -30,4 +30,6 @@ FAT32 나 NTFS 같은 `non-*nix` 계열 File System 은 permission 개념이 없
 
 Applications - Utilities - **Disk Utility.app** 을 열고,
 
-`Erase` 로 format 을 **Mac OS Extended (Mac OS 확장)** 으로 변경 해서 해결.
+`지우기 (Erase)` 로 format 을 **Mac OS Extended (Journaled): Mac OS 확장 (저널링)** 으로 변경 해서 해결.
+
+![](images/disk_utility.png)
