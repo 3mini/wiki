@@ -35,6 +35,12 @@ Jenkins ver. 2.176.1
   GetBucketLocation failed (show details)
   ```
 
+- 그 이후 S3 에는 잘 올라갔으나, download 하려고 하면 `Oops!` 에러 발생.
+
+  ![](images/rage.png)
+
+  생각지도 못한 상황이라 당황 했지만, `Amazon Credentials` 에서 `Region` 을 `ap-northeast-2` 인 `Asia Pacific (Seoul)` 로 바꿔서 해결.
+
 ### Reference
 
 - https://github.com/jenkinsci/artifact-manager-s3-plugin/blob/master/README.md
