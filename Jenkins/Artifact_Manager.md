@@ -31,9 +31,9 @@ Jenkins ver. 2.176.1
 ### Troubleshooting
 
 - `Validate S3 Bucket configuration` 하면 [에러](https://issues.jenkins-ci.org/browse/JENKINS-57317) 가 발생 하지만 upload 에는 문제 없어 보임
-    ```
-    GetBucketLocation failed (show details)
-    ```
+  ```
+  GetBucketLocation failed (show details)
+  ```
 
 ### Reference
 
