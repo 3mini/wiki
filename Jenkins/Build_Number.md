@@ -37,3 +37,5 @@ Jenkins.instance.getItemByFullName("__JOB_NAME__").updateNextBuildNumber(150)
 기존 Job 을 지우고 새로 만든 것을 Rename 했었는데, Artifacts 가 날라가는 상황이 발생했다.
 
 => 빠른 시일 내로 빌드 결과물을 S3 에 올리는 작업을 추가할 예정
+
+=> [Artifact Manager](./Artifact_Manager.md)
