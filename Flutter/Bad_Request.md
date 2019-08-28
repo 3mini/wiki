@@ -28,7 +28,7 @@ response 의 `statusCode` 와 `reasonPhrase` 가 **400 (Bad Request)**
 
 ```
 <Error>
-	<Code>InvalidArgument</Code>
+    <Code>InvalidArgument</Code>
     <Message>Only one auth mechanism allowed; only the X-Amz-Algorithm query parameter, Signature query string parameter or the Authorization header should be specified</Message>
     <ArgumentName>Authorization</ArgumentName>
     <ArgumentValue>Basic XXXXX</ArgumentValue>
@@ -55,42 +55,42 @@ HttpClientResponse 가 redirect 하라고 하면 `maxRedirects` 만 정해두고
 
 ```dart
 Future<File> httpDownload(...) async {
-	...
-	try {
-		HttpClientRequest request = await client.getUrl(uri)
-			..followRedirects = false
-			..headers.persistentConnection = false;
-		HttpClientResponse resp = await request.close();
+  ...
+  try {
+    HttpClientRequest request = await client.getUrl(uri)
+      ..followRedirects = false
+      ..headers.persistentConnection = false;
+    HttpClientResponse resp = await request.close();
 
-		if (resp.isRedirect) {
-			resp = await followRedirects(client, resp);
-		}
+    if (resp.isRedirect) {
+      resp = await followRedirects(client, resp);
+    }
 
-		if (resp.statusCode != HttpStatus.ok) {
-			throw new HttpException('status code: ${resp.statusCode}');
-		}
+    if (resp.statusCode != HttpStatus.ok) {
+      throw new HttpException('status code: ${resp.statusCode}');
+    }
 
-		return _downloadToFile(...);
-	} catch (e) {
-		return new Future.error(e);
-	} finally {
-		client.close();
-	}
+    return _downloadToFile(...);
+  } catch (e) {
+    return new Future.error(e);
+  } finally {
+    client.close();
+  }
 }
 
 Future<HttpClientResponse> followRedirects(
-	HttpClient client, HttpClientResponse response) async {
-	int maxRedirects = 5;
-	HttpClientResponse nextResponse = response;
+  HttpClient client, HttpClientResponse response) async {
+  int maxRedirects = 5;
+  HttpClientResponse nextResponse = response;
 
-	for (int i = 0; i < maxRedirects && nextResponse.isRedirect; ++i) {
-		String url = nextResponse.headers['location'].last;
-		HttpClientRequest request = await client.getUrl(Uri.parse(url))
-			..followRedirects = false
-			..headers.persistentConnection = false;
-		nextResponse = await request.close();
-	}
+  for (int i = 0; i < maxRedirects && nextResponse.isRedirect; ++i) {
+    String url = nextResponse.headers['location'].last;
+    HttpClientRequest request = await client.getUrl(Uri.parse(url))
+      ..followRedirects = false
+      ..headers.persistentConnection = false;
+    nextResponse = await request.close();
+  }
 
-	return nextResponse;
+  return nextResponse;
 }
 ```
