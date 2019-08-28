@@ -29,7 +29,7 @@ secret 을 잘못 설정 했나 확인 하다보니, quote 없이 password 에 `
 
 **Single Quote** 를 추가해서 해결 (Double Quote 를 쓰지 않았던 이유는 password 에 `!` 도 들어갈 수 있어서)
 
-```
+```bash
 bash buildscript.sh ... -p \'${UNITY_PASSWORD}\' ...
 ```
 
