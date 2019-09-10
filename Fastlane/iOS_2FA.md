@@ -1,5 +1,9 @@
 ## iOS 2FA
 
+### Environment
+
+Fastlane ver. 2.119.0
+
 ### Troubleshooting
 
 Fastlane 을 업그레이드 했을 때 쯤 (2.114 -> 2.119) 빌드 파이프라인에서 이상한 에러가 발생 했다.
