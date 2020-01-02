@@ -145,6 +145,48 @@ PUT _template/MY_TEMPLATE
 }
 ```
 
+### Error 3
+
+2020년의 시작과 함께 로그가 쌓이지 않았다. 🙃
+
+```
+elasticsearch - Could not index event to Elasticsearch
+{
+  :status => 400,
+  :action => [
+    "index", 
+    {
+      :_id => nil,
+      :_index => "YYYYY-20200102",
+      :_type => "_doc",
+      :routing => nil
+    },
+    #<LogStash::Event:0x5d8aad73>
+  ],
+  :response => {
+    "index" => {
+      "_index" => "YYYYY-20200102",
+      "_type" => "_doc",
+      "_id" => nil,
+      "status" => 400,
+      "error" => {
+        "type" => "validation_exception",
+        "reason" => "Validation Failed: 1: this action would add [10] total shards, but this cluster currently has [4993]/[5000] maximum shards open;"
+      }
+    }
+  }
+}
+```
+
+#### Before
+![](images/elasticsearch_summary.png)
+
+[Joda formats](https://www.joda.org/joda-time/apidocs/org/joda/time/format/DateTimeFormat.html) 를 참고해서, daily 로 하기엔 크지 않는 index 들은 weekly 로 묶어서 shard 수를 줄이려고 시도.
+
+```
+%{+YYYYMMdd} => %{+xxxxww}
+```
+
 ### TODO
 
 Filebeat + Logstash 로그들은 따로 보고 있지 않아서, 고민 필요.
