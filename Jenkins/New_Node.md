@@ -2,13 +2,15 @@
 
 ### Environment
 
-Jenkins ver. 2.176.1
+~~Jenkins ver. 2.176.1~~
+
+Jenkins ver. 2.222.1
 
 ### Getting Started
 
 JNLP (Java Network Launch Protocol) 를 이용
 
-#### MacOS
+### Configuration
 
 1. Jenkins - Nodes 에서 `Launch Method` 를 `Launch agent by connecting it to the master` 로 선택 
 
@@ -28,7 +30,9 @@ JNLP (Java Network Launch Protocol) 를 이용
 
 5. Node 머신에 접속해서 curl 로 agent.jar 다운로드하고 위치는 적절히 수정
 
-6. `~/Library/LaunchAgents/org.jenkins-agent.plist` 파일을 작성
+#### MacOS
+
+6. `~/Library/LaunchAgents/org.jenkins-agent.plist` 파일을 작성.
 
     ```xml
     <?xml version="1.0" encoding="UTF-8"?>
@@ -75,4 +79,38 @@ JNLP (Java Network Launch Protocol) 를 이용
 
     ```
     launchctl list org.jenkins-agent
+    ```
+
+#### Ubuntu
+
+6. `jenkins-agent.service` 파일을 작성.
+
+    ```
+    [Unit]
+    Description=Run jenkins agent as daemon
+
+    [Service]
+    ExecStart=/usr/bin/java -jar /home/XXXXX/jenkins_workspace/agent.jar -jnlpUrl _____JNLPURL____ -secret _____SECRET_____ -workDir "/home/XXXXX/jenkins_workspace"
+    User=ubuntu
+
+    [Install]
+    WantedBy=multi-user.target
+    ```
+
+7. `/etc/systemd/system` 에 symlink 생성.
+
+8. Run service
+
+    ```bash
+    $ systemctl start jenkins-agent.service # starts the service
+    $ systemctl enable jenkins-agent.service # auto starts the service
+    $ systemctl restart jenkins-agent.service # restarts the service
+    $ systemctl disable jenkins-agent.service # stops autostart
+    $ systemctl stop jenkins-agent.service # stops the service
+    ```
+
+9. Check if status is `active (running)`.
+
+    ```bash
+    $ systemctl status jenkins-agent.service
     ```
