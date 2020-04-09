@@ -19,7 +19,11 @@ Amazon ElastiCache (cache.m4.xlarge)
 `EngineCPUUtilization` 이라는 Metric 를 보고 나니, 상당한 workloads 가 있었음을 파악.
 
 ```
-Provides CPU utilization of the Redis engine thread. Since Redis is single-threaded, you can use this metric to analyze the load of the Redis process itself. The EngineCPUUtilization metric provides a more precise visibility of the Redis process and can be used in conjunction with CPUUtilization metric, which exposes CPU utilization for the server instance as a whole, including other operating system and management processes. For larger node types with 4vCPUs or more, use the EngineCPUUtilization metric to monitor and set thresholds for scaling. For smaller node types with 2vCPUs or less, use the CPUUtilization metric.
+Provides CPU utilization of the Redis engine thread.
+Since Redis is single-threaded, you can use this metric to analyze the load of the Redis process itself.
+The EngineCPUUtilization metric provides a more precise visibility of the Redis process and can be used in conjunction with CPUUtilization metric, which exposes CPU utilization for the server instance as a whole, including other operating system and management processes.
+For larger node types with 4vCPUs or more, use the EngineCPUUtilization metric to monitor and set thresholds for scaling.
+For smaller node types with 2vCPUs or less, use the CPUUtilization metric.
 ```
 
 ### SLOWLOG
