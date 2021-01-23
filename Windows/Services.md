@@ -23,3 +23,9 @@ JAVA 를 업데이트 하고 난 후, 이전 버전인 **jre1.8.0_212** 에 접�
 ```
 INFO - Starting C:\Program Files\Java\jre1.8.0_212\bin\java.exe -Xrs -jar "XXXXX.jar" -jnlpUrl __JNLPURL__ -secret __SECRET__
 ```
+
+`jenkins-slave.xml` 에서 executable 부분을 수정.
+
+```xml
+<executable>C:\Program Files\Java\jre1.8.0_281\bin\java.exe</executable>
+```
